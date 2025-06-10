@@ -3,8 +3,8 @@
 # DMAAG 
 
 ## Project Repositories
-- Frontend: [DMAAG_Frontend](https://github.com/tadipaneni/DMAAG_Frontend/tree/master)
-- Backend: [DMAAG_GraphQL](https://github.com/tadipaneni/DMAAG_GraphQL/tree/master)
+- Frontend: [DMAAG_Frontend](https://github.com/kgelli/DMAAG_Frontend/tree/master)
+- Backend: [DMAAG_GraphQL](https://github.com/kgelli/DMAAG_GraphQL/tree/master)
 
 ## Prerequisites
 - Node.js and npm installed
@@ -28,11 +28,11 @@
 ### 1. Clone the Repositories
 ```bash
 # Clone Frontend
-git clone https://github.com/tadipaneni/DMAAG_Frontend.git
+git clone https://github.com/kgelli/DMAAG_Frontend.git
 cd DMAAG_Frontend
 
 # Clone Backend (in a separate terminal)
-git clone https://github.com/tadipaneni/DMAAG_GraphQL.git
+git clone https://github.com/kgelli/DMAAG_GraphQL.git
 cd DMAAG_GraphQL
 ```
 
