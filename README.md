@@ -1,5 +1,3 @@
-=======
-
 # DMAAG
 
 ## Project Repositories
