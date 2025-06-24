@@ -490,7 +490,7 @@ export function GsuRecordsPage() {
                 <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">Record Details</h2>
-                    <Button onClick={() => setShowDetailView(false)} variant="ghost" className="h-8 w-8 px-2 ">
+                    <Button onClick={() => setShowDetailView(false)} size="sm" variant="ghost">
                       <X className="h-4 w-4" />
                     </Button>
                   </div>
@@ -557,7 +557,7 @@ export function GsuRecordsPage() {
                               onClick={() => showRecordDetails(record)} 
                               size="sm" 
                               variant="ghost"
-                              className="h-8 w-8 px-2"
+                              className="!w-8 !h-8 !p-0 !flex !items-center !justify-center !min-w-0"
                             >
                               <Eye className="h-4 w-4 text-white-600" />
                             </Button>
