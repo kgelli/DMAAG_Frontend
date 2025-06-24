@@ -652,7 +652,7 @@ export function TroyRecordsPage({ showDashboard, setShowDashboard }) {
                                 onClick={() => showRecordDetails(record)} 
                                 size="sm" 
                                 variant="ghost"
-                                cclassName="!w-8 !h-8 !p-0 !flex !items-center !justify-center !min-w-0"
+                                className="!w-8 !h-8 !p-0 !flex !items-center !justify-center !min-w-0"
                               >
                                 <Eye className="h-4 w-4 text-white-600" />
                               </Button>
