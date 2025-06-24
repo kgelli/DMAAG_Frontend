@@ -1,7 +1,8 @@
 // src/components/Navigation.js
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Database, BarChart2, Info, Search, MapPin } from 'lucide-react';
+import { BarChart2, Info, Search, MapPin } from 'lucide-react';
+//import { Database } from 'lucide-react';
 
 export function Navigation() {
   const location = useLocation();
