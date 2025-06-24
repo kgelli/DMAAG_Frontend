@@ -398,24 +398,29 @@ export function GsuDashboard() {
               <CardHeader>
                 <CardTitle>County Transaction Analysis</CardTitle>
               </CardHeader>
-              <CardContent className="h-[500px]">
+              <CardContent className="h-[600px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart 
                     data={dashboardData.countyStats}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 120 }}
                   >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
                       dataKey="name" 
                       angle={-45} 
                       textAnchor="end"
-                      height={60}
+                      height={80}
                       interval={0}
+                      tick={{ fontSize: 12 }}
                     />
                     <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
                     <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend />
+                    <Legend 
+                      verticalAlign="bottom" 
+                      height={36}
+                      wrapperStyle={{ paddingTop: '10px' }}
+                    />
                     <Bar yAxisId="left" dataKey="totalValue" name="Total Value ($)" fill="#3b82f6">
                       {dashboardData.countyStats.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
