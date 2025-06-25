@@ -1,7 +1,7 @@
 // src/components/Navigation.js
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BarChart2, Info, Search, MapPin } from 'lucide-react';
+import { Home, BarChart2, Info, Search, MapPin } from 'lucide-react';
 //import { Database } from 'lucide-react';
 
 export function Navigation() {
@@ -17,12 +17,14 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16 items-center">
           <Link to="/" className="flex items-center space-x-2 hover:text-blue-100 transition-colors">
-            {/* <Database className="h-6 w-6" /> */}
+            {/* <Database className="h-6 w-6" /> 
             <img 
               src="/logo.png" 
               alt="DMMAG Logo" 
               className="h-8 w-8 object-contain"
             />
+            */}
+            <Home className="h-6 w-6" />
             <span className="font-bold text-xl">DMMAG</span>
           </Link>
           <div className="flex space-x-4">
