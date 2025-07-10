@@ -350,16 +350,27 @@ export function GsuDashboard() {
               <CardHeader>
                 <CardTitle>Top Buyers by Value</CardTitle>
               </CardHeader>
-              <CardContent className="h-[400px]">
+              <CardContent className="h-[500px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={dashboardData.buyerStats.slice(0, 5)}>
+                  <BarChart 
+                    data={dashboardData.buyerStats.slice(0, 5)}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }} // Increased bottom margin
+                  >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" angle={-15} textAnchor="end" height={60} />
-                    <YAxis />
+                    <XAxis 
+                      dataKey="name" 
+                      angle={-25} // Changed from -15 to -45
+                      textAnchor="end" 
+                      height={100} // Increased height
+                      interval={0} // Force all labels to show
+                      tick={{ fontSize: 11 }} // Smaller font if needed
+                    />
+                    <YAxis yAxisId="left" orientation="left"/>
+                    <YAxis yAxisId="right" orientation="right" />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend />
-                    <Bar dataKey="totalValue" name="Total Value ($)" fill="#3b82f6" />
-                    <Bar dataKey="transactions" name="Transactions" fill="#10b981" />
+                    <Bar yAxisId="left" dataKey="totalValue" name="Total Value ($)" fill="#3b82f6" />
+                    <Bar yAxisId="right" dataKey="transactions" name="Transactions" fill="#10b981" />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -370,14 +381,21 @@ export function GsuDashboard() {
               <CardHeader>
                 <CardTitle>Value Distribution Analysis</CardTitle>
               </CardHeader>
-              <CardContent className="h-[400px]">
+              <CardContent className="h-[500px]"> {/* Increased height from 400px to 500px */}
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
-                    data={dashboardData.sellerStats.slice(0, 5)}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+                    data={dashboardData.sellerStats.slice(0, 5)} // Or change to .slice(0, 10) for more people
+                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }} // Increased bottom margin significantly
                   >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" angle={-15} textAnchor="end" height={60} />
+                    <XAxis 
+                      dataKey="name" 
+                      angle={-25} 
+                      textAnchor="end" 
+                      height={100} // Increased height for rotated labels
+                      interval={0} // Force all labels to show
+                      tick={{ fontSize: 11 }} // Smaller font size
+                    />
                     <YAxis yAxisId="left" orientation="left" />
                     <YAxis yAxisId="right" orientation="right" />
                     <Tooltip content={<CustomTooltip />} />
@@ -402,7 +420,7 @@ export function GsuDashboard() {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart 
                     data={dashboardData.countyStats}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 120 }}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
                   >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
@@ -413,20 +431,40 @@ export function GsuDashboard() {
                       interval={0}
                       tick={{ fontSize: 12 }}
                     />
-                    <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
-                    <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Legend 
-                      verticalAlign="bottom" 
-                      height={36}
-                      wrapperStyle={{ paddingTop: '10px' }}
+                    <YAxis 
+                      yAxisId="left" 
+                      orientation="left" 
+                      stroke="#3b82f6" 
+                      scale="log"
+                      domain={['auto', 'auto']}
+                      allowDataOverflow
                     />
-                    <Bar yAxisId="left" dataKey="totalValue" name="Total Value ($)" fill="#3b82f6">
-                      {dashboardData.countyStats.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
-                    </Bar>
-                    <Bar yAxisId="right" dataKey="transactions" name="Number of Transactions" fill="#10b981" />
+                    <YAxis 
+                      yAxisId="right" 
+                      orientation="right" 
+                      stroke="#10b981" 
+                      scale="log"
+                      domain={['auto', 'auto']}
+                      allowDataOverflow
+                    />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Legend verticalAlign="bottom" height={36} />
+                    <Bar 
+                      yAxisId="left" 
+                      dataKey="totalValue" 
+                      name="Total Value ($)" 
+                      fill="#3b82f6"
+                      barSize={20}
+                      minPointSize={2}
+                    />
+                    <Bar 
+                      yAxisId="right" 
+                      dataKey="transactions" 
+                      name="Number of Transactions" 
+                      fill="#10b981"
+                      barSize={20}
+                      minPointSize={2}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>

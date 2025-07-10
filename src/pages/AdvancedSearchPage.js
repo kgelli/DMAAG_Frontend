@@ -157,7 +157,10 @@ const [advancedFilters, setAdvancedFilters] = useState({
     personName: `${record.seller_firstname || ''} ${record.seller_lastname || ''}`.trim() || 'Unknown Seller',
     personRole: 'Seller',
     date: record.deed_date || 'Unknown',
-    location: `${record.deed_county || ''}, ${record.deed_state || ''}`.replace(', ', '') || 'Unknown',
+    location: 
+        record.deed_county && record.deed_state
+          ? `${record.deed_county}, ${record.deed_state}`
+          : record.deed_county || record.deed_state || 'Unknown',    
     transactionType: 'Deed/Sale',
     details: record.Notes || '',
     originalRecord: record,
@@ -171,7 +174,10 @@ const [advancedFilters, setAdvancedFilters] = useState({
     personName: `${record.buyer_firstname || ''} ${record.buyer_lastname || ''}`.trim() || 'Unknown Buyer',
     personRole: 'Buyer',
     date: record.deed_date || 'Unknown',
-    location: `${record.deed_county || ''}, ${record.deed_state || ''}`.replace(', ', '') || 'Unknown',
+    location: 
+    record.deed_county && record.deed_state
+      ? `${record.deed_county}, ${record.deed_state}`
+      : record.deed_county || record.deed_state || 'Unknown',
     transactionType: 'Deed/Sale',
     details: record.Notes || '',
     originalRecord: record,
