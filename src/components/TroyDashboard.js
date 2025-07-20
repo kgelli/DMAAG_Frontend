@@ -753,10 +753,23 @@ export default function TroyDashboard() {
                       <YAxis yAxisId="left" orientation="left" />
                       <YAxis yAxisId="right" orientation="right" />
                       <Tooltip 
-                        formatter={(value, name) => [
-                          name.includes('avgValue') ? `${value.toLocaleString()}` : value.toLocaleString(),
-                          name.includes('avgValue') ? 'Average Value' : 'Count'
-                        ]}
+                        content={({ active, payload, label }) => {
+                          if (active && payload && payload.length) {
+                            return (
+                              <div className="bg-white p-3 shadow-lg rounded border">
+                                <p className="font-semibold">{label}</p>
+                                {payload.map((entry, index) => (
+                                  <p key={index} style={{ color: entry.color }}>
+                                    {entry.dataKey === 'avgValue' ? 'Average Value' : 'Count'}: {
+                                      entry.dataKey === 'avgValue' ? `$${entry.value.toLocaleString()}` : entry.value.toLocaleString()
+                                    }
+                                  </p>
+                                ))}
+                              </div>
+                            );
+                          }
+                          return null;
+                        }}
                       />
                       <Legend />
                       <Bar yAxisId="left" dataKey="avgValue" name="Average Value ($)" fill="#3b82f6" />
@@ -788,11 +801,26 @@ export default function TroyDashboard() {
                       <YAxis yAxisId="left" orientation="left" />
                       <YAxis yAxisId="right" orientation="right" />
                       <Tooltip 
-                        formatter={(value, name) => [
-                          name.includes('avgValue') ? `${value.toLocaleString()}` : value.toLocaleString(),
-                          name.includes('avgValue') ? 'Average Value' : 'Count'
-                        ]}
-                      />
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <div className="bg-white p-4 shadow-lg rounded-lg border">
+                              <p className="font-semibold mb-2">{label} Age Category</p>
+                              {payload.map((entry, index) => (
+                                <p key={index} style={{ color: entry.color }} className="text-sm">
+                                  {entry.dataKey === 'avgValue' ? 'Average Value' : 'Count'}: {
+                                    entry.dataKey === 'avgValue' 
+                                      ? `$${Math.round(entry.value).toLocaleString()}` 
+                                      : entry.value.toLocaleString()
+                                  }
+                                </p>
+                              ))}
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
                       <Legend />
                       <Bar yAxisId="left" dataKey="avgValue" name="Average Value ($)" fill="#f59e0b" />
                       <Bar yAxisId="right" dataKey="count" name="Count" fill="#8b5cf6" />
@@ -2365,7 +2393,7 @@ export default function TroyDashboard() {
                   <h3 className="font-medium text-amber-800 text-lg mb-3">Historical Geographic Context</h3>
                   <p className="text-amber-700 text-sm mb-3">
                     The spatial distribution of transactions reflects the broader geographic and economic development 
-                    of Pike County during the antebellum period. Transportation infrastructure, agricultural suitability, 
+                    of Georgia State during the antebellum period. Transportation infrastructure, agricultural suitability, 
                     and settlement patterns all influenced where and how transactions occurred.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -2391,12 +2419,12 @@ export default function TroyDashboard() {
                 <div className="mt-6 bg-gray-100 p-5 rounded-lg shadow-sm">
                   <h3 className="font-medium text-gray-800 text-lg mb-3">Human Geography of Slavery</h3>
                   <p className="text-gray-700 text-sm">
-                    Beyond economic data, these location patterns represent the human geography of slavery—
+                    Beyond economic data, these location patterns represent the human geography of slavery - 
                     the places where enslaved persons lived, worked, and were separated from families. Each 
                     location represents communities where enslaved individuals built relationships, developed 
                     skills, and maintained cultural practices despite the constraints of bondage. Understanding 
                     the geographic distribution helps illuminate how slavery shaped the physical and social 
-                    landscape of Pike County, creating networks of control and resistance that extended across 
+                    landscape of Georgia State, creating networks of control and resistance that extended across 
                     the entire region.
                   </p>
                 </div>
@@ -2778,7 +2806,7 @@ export default function TroyDashboard() {
                     <h3 className="font-medium text-red-800 text-lg mb-3">Enslaver Activity Patterns</h3>
                     <p className="text-red-700 text-sm mb-3">
                       The distribution of enslaver activity shows the concentration of slave ownership and 
-                      trading in Pike County. Some individuals engaged in extensive trading activities, 
+                      trading in Georgia State. Some individuals engaged in extensive trading activities, 
                       while others appear in only occasional transactions, often related to estate settlements 
                       or family transfers.
                     </p>
@@ -2798,7 +2826,7 @@ export default function TroyDashboard() {
                   <h3 className="font-medium text-indigo-800 text-lg mb-3">Network Analysis</h3>
                   <p className="text-indigo-700 text-sm mb-3">
                     The transaction frequency data reveals the social and economic networks that facilitated 
-                    the slave trade in Pike County. Highly active individuals often served as intermediaries 
+                    the slave trade in Georgia State. Highly active individuals often served as intermediaries 
                     or brokers, connecting buyers and sellers across the region.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
