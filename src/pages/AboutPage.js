@@ -37,8 +37,19 @@ export function AboutPage() {
     },
     {
       id: 3,
+      name: "Kusal Venkata Sai Shravanth Gelli",
+      role: "Software Engineer - GRA",
+      department: "Computer Science Department, GSU",
+      bio: "Played a key role in stabilizing and enhancing the DMMAG project by resolving major frontend and backend issues, maintaining core features and ensuring smooth feature integration.",
+      image: "/images/team/Kusal-Gelli.jpg",
+      email: "shravanthsai2508@gmail.com",
+      linkedin: "kgelli",
+      website: ""
+    },
+    {
+      id: 4,
       name: "Shreya Tadipaneni",
-      role: "GRA - Lead Software Developer Engineer",
+      role: "Lead Software Developer Engineer - GRA",
       department: "Computer Science Department, GSU",
       bio: "Developer of the entire DMMAG application, implementing the database architecture, backend systems, and frontend interfaces to create a comprehensive research platform.",
       image: "/images/team/shreya-tadipaneni.jpg",
@@ -48,7 +59,7 @@ export function AboutPage() {
     },
 
     {
-      id: 4,
+      id: 5,
       name: "Ras Michael Brown",
       role: "Co-Principal Investigator",
       department: "History Department, Georgia State University",
@@ -59,7 +70,7 @@ export function AboutPage() {
       website: ""
     },
     {
-      id: 5,
+      id: 6,
       name: "Robert D. Carlson",
       role: "Co-Research Investigator",
       department: "History Department, Troy University",
@@ -70,7 +81,7 @@ export function AboutPage() {
       website: ""
     },
     {
-      id: 6,
+      id: 7,
       name: "Timothy R. Buckner",
       role: "Co-Research Investigator",
       department: "History Department, Troy University",
@@ -190,6 +201,11 @@ export function AboutPage() {
       program: "English PhD Student, GSU"
     },
     {
+      name: "Kusal Venkata Sai Shravanth Gelli",
+      role: "Full-Stack Software Engineer",
+      program: "Computer Science Masters Student, GSU"
+    },
+    {
       name: "Shreya Tadipaneni",
       role: "Lead Software Development Engineer",
       program: "Computer Science Masters Student, GSU"
@@ -258,7 +274,7 @@ export function AboutPage() {
             <CardTitle>Meet Our Team</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {teamMembers.map((member) => (
                 member.name ? (
                   <div key={member.id} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 p-4">
@@ -343,7 +359,7 @@ export function AboutPage() {
             <CardTitle>Graduate Research Assistants</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {graduateResearchAssistants.map((member, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
                   <h3 className="text-lg font-medium text-gray-900 mb-1">{member.name}</h3>
