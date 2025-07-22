@@ -44,7 +44,7 @@ export default function TroyDashboard() {
     async function loadAndProcessData() {
       try {
         console.log('Loading Troy CSV data...');
-        const response = await fetch('/troyrecords.csv');
+        const response = await fetch('/cleaned_troyrecords.csv');
         const csvText = await response.text();
         
         // Parse CSV
@@ -61,13 +61,22 @@ export default function TroyDashboard() {
         const parsedData = parsed.data;
         console.log('Processing', parsedData.length, 'records');
 
+        const extractYear = (dateStr) => {
+          if (!dateStr) return null;
+          // Handle format like [18320000] or 18320000
+          const cleanDate = dateStr.toString().replace(/[\[\]]/g, '');
+          // Extract first 4 digits as year
+          const year = parseInt(cleanDate.substring(0, 4));
+          return isNaN(year) ? null : year;
+        };
+        
         // Process Data for Different Views
         
         // Yearly Analysis
         const yearlyData = _.chain(parsedData)
           .groupBy(record => {
             const date = record.trans_record_date ? 
-              new Date(record.trans_record_date.toString()).getFullYear() : null;
+              extractYear(record.trans_record_date) : null;
             return date;
           })
           .map((records, year) => ({
@@ -82,16 +91,25 @@ export default function TroyDashboard() {
           .filter(item => !isNaN(item.year));
 
         // Monthly Transaction Analysis
+        const extractMonth = (dateStr) => {
+          if (!dateStr) return null;
+          const cleanDate = dateStr.toString().replace(/[\[\]]/g, '');
+          const month = parseInt(cleanDate.substring(4, 6));
+          return isNaN(month) ? null : month;
+        };
+        
         const monthlyData = _.chain(parsedData)
           .filter(record => record.trans_record_date)
           .map(record => {
-            const date = new Date(record.trans_record_date.toString());
+            const year = extractYear(record.trans_record_date);
+            const month = extractMonth(record.trans_record_date);
             return {
               ...record,
-              year: date.getFullYear(),
-              month: date.getMonth() + 1
+              year,
+              month
             };
           })
+          .filter(r => r.year && r.month)
           .groupBy(record => `${record.year}-${record.month}`)
           .map((records, yearMonth) => {
             const [year, month] = yearMonth.split('-').map(Number);
@@ -102,13 +120,18 @@ export default function TroyDashboard() {
               monthName: new Date(year, month - 1, 1).toLocaleString('default', { month: 'long' }),
               transactions: records.length,
               salesCount: records.filter(r => r.trans_type?.toLowerCase().includes('sale')).length,
-              hiresCount: records.filter(r => r.trans_type?.toLowerCase().includes('hire')).length,
+              hiresCount: records.filter(r => {
+                const type = r.trans_type?.toLowerCase();
+                return type && (type.includes('hire') || type.includes('employment'));
+              }).length,
               distributionsCount: records.filter(r => r.trans_type?.toLowerCase().includes('distribution')).length,
               totalValue: _.sumBy(records, r => parseFloat(r.transindv_value) || 0)
             };
           })
           .sortBy(['year', 'month'])
           .value();
+
+        
 
         // Location Analysis
         const locationStats = _.chain(parsedData)
@@ -136,7 +159,11 @@ export default function TroyDashboard() {
 
         // Price Ranges Analysis
         const salesRecords = parsedData.filter(r => r.trans_type?.toLowerCase().includes('sale') && parseFloat(r.transindv_value) > 0);
-        const hiresRecords = parsedData.filter(r => r.trans_type?.toLowerCase().includes('hire') && parseFloat(r.transindv_value) > 0);
+        const hiresRecords = parsedData.filter(r => {
+          const type = r.trans_type?.toLowerCase();
+          return type && (type.includes('hire') || type.includes('employment')) &&
+                parseFloat(r.transindv_value) > 0;
+        });        
         const distributionsRecords = parsedData.filter(r => r.trans_type?.toLowerCase().includes('distribution') && parseFloat(r.transindv_value) > 0);
 
         const calculatePriceStats = records => {
@@ -853,7 +880,7 @@ export default function TroyDashboard() {
                   <div className="bg-amber-50 p-4 rounded-lg">
                     <h3 className="font-medium text-amber-800 text-lg mb-2">Hire Transactions</h3>
                     <p className="text-amber-700 mb-2">
-                      Hire transactions represent temporary labor contracts, typically for one year.
+                      Hire transactions (labeled as 'hire' or 'employment') represent temporary labor contracts, typically for one year.
                       Lower values reflect the temporary nature but show consistent demand for:
                     </p>
                     <ul className="list-disc pl-5 space-y-1 text-amber-700 text-sm">
@@ -1285,53 +1312,56 @@ export default function TroyDashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>Monthly Transaction Types Distribution</CardTitle>
-                <p className="text-sm text-gray-500">Stacked view showing composition of transaction types by month</p>
+                <p className="text-sm text-gray-500">
+                  Stacked view showing composition of transaction types by month
+                </p>
               </CardHeader>
               <CardContent className="h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    data={_.chain(dashboardData.transactionsByMonth)
-                      .groupBy('month')
-                      .map((monthRecords, month) => ({
-                        month: parseInt(month),
-                        monthName: new Date(2000, month - 1, 1).toLocaleString('default', { month: 'short' }),
-                        sales: _.sumBy(monthRecords, 'salesCount'),
-                        hires: _.sumBy(monthRecords, 'hiresCount'),
-                        distributions: _.sumBy(monthRecords, 'distributionsCount')
-                      }))
-                      .sortBy('month')
-                      .value()}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="monthName" />
-                    <YAxis label={{ value: 'Number of Transactions', angle: -90, position: 'insideLeft' }} />
-                    <Tooltip 
-                      formatter={(value) => value.toLocaleString()}
-                    />
-                    <Legend />
-                    <Bar 
-                      dataKey="sales" 
-                      name="Sales" 
-                      stackId="a"
-                      fill="#10b981" 
-                    />
-                    <Bar 
-                      dataKey="hires" 
-                      name="Hires" 
-                      stackId="a"
-                      fill="#f59e0b" 
-                    />
-                    <Bar 
-                      dataKey="distributions" 
-                      name="Distributions" 
-                      stackId="a"
-                      fill="#ef4444" 
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
+                {(() => {
+                  const monthlyTransactionTypeData = _.chain(dashboardData.transactionsByMonth)
+                    .groupBy('month')
+                    .map((records, month) => {
+                      const monthNum = parseInt(month);
+                      return {
+                        monthNum,
+                        month: new Date(2000, monthNum - 1).toLocaleString('default', { month: 'short' }),
+                        sales: _.sumBy(records, 'salesCount'),
+                        hires: _.sumBy(records, 'hiresCount'),
+                        distributions: _.sumBy(records, 'distributionsCount'),
+                      };
+                    })
+                    .sortBy('monthNum') 
+                    .value();
+
+                  return (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart
+                        data={monthlyTransactionTypeData}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis
+                          label={{
+                            value: 'Number of Transactions',
+                            angle: -90,
+                            position: 'insideLeft',
+                            offset: 10,
+                            style: { textAnchor: 'middle', fill: '#4B5563', fontSize: 12 }
+                          }}
+                        />
+                        <Tooltip formatter={(value) => value.toLocaleString()} />
+                        <Legend />
+                        <Bar dataKey="sales" stackId="a" fill="#10b981" name="Sales" />
+                        <Bar dataKey="hires" stackId="a" fill="#f59e0b" name="Hires" />
+                        <Bar dataKey="distributions" stackId="a" fill="#ef4444" name="Distributions" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  );
+                })()}
               </CardContent>
             </Card>
+
 
             {/* Monthly Value Analysis */}
             <Card>
@@ -1347,7 +1377,7 @@ export default function TroyDashboard() {
                       .map((monthRecords, month) => ({
                         month: parseInt(month),
                         monthName: new Date(2000, month - 1, 1).toLocaleString('default', { month: 'short' }),
-                        avgValue: _.meanBy(monthRecords, 'totalValue'),
+                        totalValue: _.sumBy(monthRecords, 'totalValue'),
                         totalTransactions: _.sumBy(monthRecords, 'transactions'),
                         avgPerTransaction: _.meanBy(monthRecords, record => 
                           record.transactions > 0 ? record.totalValue / record.transactions : 0
@@ -1359,7 +1389,7 @@ export default function TroyDashboard() {
                   >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="monthName" />
-                    <YAxis yAxisId="left" orientation="left" label={{ value: 'Avg. Monthly Value ($)', angle: -90, position: 'insideLeft' }} />
+                    <YAxis yAxisId="left" orientation="left" label={{ value: 'Total Monthly Value ($)', angle: -90, position: 'insideLeft', offset: -20 }} />
                     <YAxis yAxisId="right" orientation="right" label={{ value: 'Avg. Per Transaction ($)', angle: 90, position: 'insideRight' }} />
                     <Tooltip 
                       formatter={(value, name) => [
@@ -1370,8 +1400,8 @@ export default function TroyDashboard() {
                     <Legend />
                     <Bar 
                       yAxisId="left" 
-                      dataKey="avgValue" 
-                      name="Average Monthly Value ($)" 
+                      dataKey="totalValue" 
+                      name="Total Monthly Value ($)" 
                       fill="#3b82f6" 
                     />
                     <Bar 
@@ -1696,7 +1726,7 @@ export default function TroyDashboard() {
                   >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="season" />
-                    <YAxis yAxisId="left" orientation="left" label={{ value: 'Total Value ($)', angle: -90, position: 'insideLeft' }} />
+                    <YAxis yAxisId="left" orientation="left" label={{ value: 'Total Value ($)', angle: -90, position: 'insideLeft', offset: -10 }} />
                     <YAxis yAxisId="right" orientation="right" label={{ value: 'Avg. Per Transaction ($)', angle: 90, position: 'insideRight' }} />
                     <Tooltip 
                       formatter={(value, name) => [
@@ -2191,7 +2221,6 @@ export default function TroyDashboard() {
               </Card>
             </div>
 
-            {/* Location Network Analysis */}
             {/* Location Network Analysis */}
             <Card>
               <CardHeader>
