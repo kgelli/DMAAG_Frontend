@@ -64,7 +64,7 @@ export default function TroyDashboard() {
         const extractYear = (dateStr) => {
           if (!dateStr) return null;
           // Handle format like [18320000] or 18320000
-          const cleanDate = dateStr.toString().replace(/[\[\]]/g, '');
+          const cleanDate = dateStr.toString().replace(/[[\]]/g, '');
           // Extract first 4 digits as year
           const year = parseInt(cleanDate.substring(0, 4));
           return isNaN(year) ? null : year;
@@ -93,7 +93,7 @@ export default function TroyDashboard() {
         // Monthly Transaction Analysis
         const extractMonth = (dateStr) => {
           if (!dateStr) return null;
-          const cleanDate = dateStr.toString().replace(/[\[\]]/g, '');
+          const cleanDate = dateStr.toString().replace(/[[\]]/g, '');
           const month = parseInt(cleanDate.substring(4, 6));
           return isNaN(month) ? null : month;
         };
