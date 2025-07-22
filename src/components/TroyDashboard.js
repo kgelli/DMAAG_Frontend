@@ -44,7 +44,7 @@ export default function TroyDashboard() {
     async function loadAndProcessData() {
       try {
         console.log('Loading Troy CSV data...');
-        const response = await fetch('/cleaned_troyrecords.csv');
+        const response = await fetch('/troyrecords.csv');
         const csvText = await response.text();
         
         // Parse CSV
