@@ -2221,88 +2221,69 @@ export default function TroyDashboard() {
               </Card>
             </div>
 
-            {/* Location Network Analysis */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  Location Network Analysis
-                  <div className="relative group">
-                    <div className="h-4 w-4 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold cursor-help">
-                      i
-                    </div>
-                    <div className="absolute z-20 invisible group-hover:visible bg-gray-900 text-white text-xs rounded py-2 px-3 -top-2 left-6 min-w-max shadow-lg whitespace-nowrap">
-                      <div className="text-center text-base mb-2">
-                        <strong>Network Density Explained:</strong><br/>
-                        <span className="text-xs">FORMULA: (UNIQUE ENSLAVED + UNIQUE ENSLAVERS) ÷ TRANSACTIONS</span>
-                      </div>
-                      • <strong>High density (&gt;1.5):</strong> Hub location with diverse participants<br/>
-                      • <strong>Medium density (1.0-1.5):</strong> Mixed trading relationships<br/>
-                      • <strong>Low density (&lt;1.0):</strong> Concentrated, repeat traders
-                    </div>
-                  </div>
-                </CardTitle>
-                <p className="text-sm text-gray-500">Understanding the interconnected nature of transaction locations</p>
-              </CardHeader>
-              <CardContent className="h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart 
-                    data={_.chain(dashboardData.locationStats)
-                      .filter(location => location.transactions >= 3)
-                      .map(location => ({
-                        name: location.name.length > 28 ? location.name.substring(0, 28) + '...' : location.name,
-                        uniqueEnslaved: location.uniqueEnslaved,
-                        uniqueEnslavers: location.uniqueEnslavers,
-                        transactions: location.transactions,
-                        density: location.transactions > 0 ? (location.uniqueEnslaved + location.uniqueEnslavers) / location.transactions : 0,
-                        fullName: location.name
-                      }))
-                      .orderBy('transactions', 'desc')
-                      .slice(0, 12)
-                      .value()}
-                    margin={{ top: 20, right: 50, left: 20, bottom: 10 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis 
-                      dataKey="name" 
-                      height={40}
-                      interval={0}
-                      fontSize={12}
-                    />
-                    <YAxis yAxisId="left" orientation="left" label={{ value: 'Count', angle: -90, position: 'insideLeft' }} />
-                    <YAxis yAxisId="right" orientation="right" label={{ value: 'Network Density', angle: 90, position: 'insideRight' }} />
-                    <Tooltip 
-                      formatter={(value, name) => [
-                        name.includes('density') ? value.toFixed(2) : value.toLocaleString(),
-                        name
-                      ]}
-                      labelFormatter={(label, payload) => {
-                        const item = payload && payload[0] && payload[0].payload;
-                        return item ? item.fullName : label;
-                      }}
-                    />
-                    <Legend />
-                    <Bar 
-                      yAxisId="left" 
-                      dataKey="uniqueEnslaved" 
-                      name="Unique Enslaved Persons" 
-                      fill="#8b5cf6" 
-                    />
-                    <Bar 
-                      yAxisId="left" 
-                      dataKey="uniqueEnslavers" 
-                      name="Unique Enslavers" 
-                      fill="#ec4899" 
-                    />
-                    <Bar 
-                      yAxisId="right" 
-                      dataKey="density" 
-                      name="Network Density" 
-                      fill="#06b6d4" 
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
+              {/* Location Network Analysis */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    Location Network Analysis
+                    {/* Info icon and tooltip removed since Network Density is no longer used */}
+                  </CardTitle>
+                  <p className="text-sm text-gray-500">Understanding the interconnected nature of transaction locations</p>
+                </CardHeader>
+                <CardContent className="h-[400px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart 
+                      data={_.chain(dashboardData.locationStats)
+                        .filter(location => location.transactions >= 3)
+                        .map(location => ({
+                          name: location.name.length > 28 ? location.name.substring(0, 28) + '...' : location.name,
+                          uniqueEnslaved: location.uniqueEnslaved,
+                          uniqueEnslavers: location.uniqueEnslavers,
+                          transactions: location.transactions,
+                          fullName: location.name
+                        }))
+                        .orderBy('transactions', 'desc')
+                        .slice(0, 12)
+                        .value()}
+                      margin={{ top: 20, right: 50, left: 20, bottom: 10 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis 
+                        dataKey="name" 
+                        height={40}
+                        interval={0}
+                        fontSize={12}
+                      />
+                      <YAxis 
+                        yAxisId="left" 
+                        orientation="left" 
+                        label={{ value: 'Count', angle: -90, position: 'insideLeft' }} 
+                      />
+                      <Tooltip 
+                        formatter={(value, name) => [value.toLocaleString(), name]}
+                        labelFormatter={(label, payload) => {
+                          const item = payload && payload[0] && payload[0].payload;
+                          return item ? item.fullName : label;
+                        }}
+                      />
+                      <Legend />
+                      <Bar 
+                        yAxisId="left" 
+                        dataKey="uniqueEnslaved" 
+                        name="Unique Enslaved Persons" 
+                        fill="#8b5cf6" 
+                      />
+                      <Bar 
+                        yAxisId="left" 
+                        dataKey="uniqueEnslavers" 
+                        name="Unique Enslavers" 
+                        fill="#ec4899" 
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
 
             {/* Detailed Location Statistics Table */}
             <Card>
@@ -2466,7 +2447,7 @@ export default function TroyDashboard() {
         {activeView === 'people' && (
           <div className="grid grid-cols-1 gap-6">
             {/* Overview Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4"> {/* Changed md:grid-cols-4 to md:grid-cols-3 */}
               <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white">
                 <CardContent className="pt-6">
                   <h3 className="text-lg font-semibold opacity-90">Total Enslaved Persons</h3>
@@ -2493,36 +2474,22 @@ export default function TroyDashboard() {
                   <p className="text-xl font-bold mt-2">
                     {dashboardData.allEnslavedFrequency && dashboardData.allEnslavedFrequency.length > 0 ? 
                       _.maxBy(dashboardData.allEnslavedFrequency.filter(p => 
-                                                                        p.name && 
-                                                                        p.name.toLowerCase() !== 'unnamed' && 
-                                                                        p.name.toLowerCase() !== 'unknown' &&
-                                                                        p.name.trim() !== ''
-                                                                      ), 
-                                                                      'transactions'
-                                                                    )?.name || 'N/A' : 'Loading...'}
-                  </p>
-                  <p className="text-sm opacity-75">
-                    {dashboardData.allEnslavedFrequency && dashboardData.allEnslavedFrequency.length > 0 ? 
-                     `${_.maxBy(dashboardData.allEnslavedFrequency.filter(p => 
                                                                           p.name && 
                                                                           p.name.toLowerCase() !== 'unnamed' && 
                                                                           p.name.toLowerCase() !== 'unknown' &&
                                                                           p.name.trim() !== ''
-                                                                        ), 'transactions')?.transactions || 0} transactions` : ''}
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-gradient-to-br from-emerald-500 to-emerald-600 text-white">
-                <CardContent className="pt-6">
-                  <h3 className="text-lg font-semibold opacity-90">Highest Value</h3>
-                  <p className="text-xl font-bold mt-2">
-                    {dashboardData.allEnslavedFrequency && dashboardData.allEnslavedFrequency.length > 0 ? 
-                      _.maxBy(dashboardData.allEnslavedFrequency, 'totalValue')?.name || 'N/A' : 
-                      'Loading...'}
+                                                                        ), 
+                                                                        'transactions'
+                                                                      )?.name || 'N/A' : 'Loading...'}
                   </p>
                   <p className="text-sm opacity-75">
                     {dashboardData.allEnslavedFrequency && dashboardData.allEnslavedFrequency.length > 0 ? 
-                      `$${_.maxBy(dashboardData.allEnslavedFrequency, 'totalValue')?.totalValue?.toLocaleString() || 0}` : ''}
+                    `${_.maxBy(dashboardData.allEnslavedFrequency.filter(p => 
+                                                                            p.name && 
+                                                                            p.name.toLowerCase() !== 'unnamed' && 
+                                                                            p.name.toLowerCase() !== 'unknown' &&
+                                                                            p.name.trim() !== ''
+                                                                          ), 'transactions')?.transactions || 0} transactions` : ''}
                   </p>
                 </CardContent>
               </Card>
@@ -2533,14 +2500,16 @@ export default function TroyDashboard() {
               {/* Top Enslaved Persons by Transaction Volume */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Most Frequently Recorded Enslaved Persons</CardTitle>
-                  <p className="text-sm text-gray-500">Individuals appearing in multiple transaction records</p>
+                  <CardTitle>Most Common Enslaved Names</CardTitle>
+                  <p className="text-sm text-gray-500">
+                    First names appearing most frequently in transaction records (may represent different individuals with the same name)
+                  </p>
                 </CardHeader>
                 <CardContent className="h-[400px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart 
                       data={dashboardData.enslavedStats.slice(0, 10)}
-                      margin={{ top: 20, right: 50, left: 20, bottom: 30 }}
+                      margin={{ top: 20, right: 30, left: 20, bottom: 30 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis 
@@ -2551,26 +2520,17 @@ export default function TroyDashboard() {
                         interval={0}
                         fontSize={10}
                       />
-                      <YAxis yAxisId="left" orientation="left" label={{ value: 'Transactions', angle: -90, position: 'insideLeft' }} />
-                      <YAxis yAxisId="right" orientation="right" label={{ value: 'Total Value ($)', angle: 90, position: 'insideRight', offset: -10 }} />
+                      <YAxis 
+                        label={{ value: 'Transactions', angle: -90, position: 'insideLeft' }} 
+                      />
                       <Tooltip 
-                        formatter={(value, name) => [
-                          name.includes('Value') ? `$${value.toLocaleString()}` : value.toLocaleString(),
-                          name
-                        ]}
+                        formatter={(value, name) => [value.toLocaleString(), "Transactions"]}
                       />
                       <Legend />
                       <Bar 
-                        yAxisId="left" 
                         dataKey="transactions" 
                         name="Number of Transactions" 
                         fill="#8b5cf6" 
-                      />
-                      <Bar 
-                        yAxisId="right" 
-                        dataKey="totalValue" 
-                        name="Total Value ($)" 
-                        fill="#10b981" 
                       />
                     </BarChart>
                   </ResponsiveContainer>
@@ -2692,35 +2652,26 @@ export default function TroyDashboard() {
               {/* Enslaved Persons Table */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Enslaved Persons Records</CardTitle>
-                  <p className="text-sm text-gray-500">Top individuals by transaction frequency</p>
+                  <CardTitle>Enslaved Name Frequency</CardTitle>
+                  <p className="text-sm text-gray-500">Most commonly occurring names in transaction records</p>
                 </CardHeader>
                 <CardContent>
                   <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
                     <table className="min-w-full divide-y divide-gray-200">
                       <thead style={{ position: 'sticky', top: 0, backgroundColor: '#f9fafb', zIndex: 10 }}>
                         <tr>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{ backgroundColor: '#f9fafb' }}>Rank</th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{ backgroundColor: '#f9fafb' }}>Name</th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{ backgroundColor: '#f9fafb' }}>Transactions</th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{ backgroundColor: '#f9fafb' }}>Total Value</th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{ backgroundColor: '#f9fafb' }}>Avg. Value</th>
-                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" style={{ backgroundColor: '#f9fafb' }}>Roles</th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rank</th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Transactions</th>
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {/*{dashboardData.enslavedStats.filter(p => 
-                                                            p.name && 
-                                                            p.name.toLowerCase() !== 'unnamed' && 
-                                                            p.name.toLowerCase() !== 'unknown' &&
-                                                            p.name.trim() !== ''
-                                                          )*/}
                         {dashboardData.enslavedStats.filter(p => 
-                                                            p.name && 
-                                                            p.name.toLowerCase() !== 'unnamed' && 
-                                                            p.name.toLowerCase() !== 'unknown' &&
-                                                            p.name.trim() !== ''
-                                                          ).slice(0, 20).map((person, index) => (
+                            p.name && 
+                            p.name.toLowerCase() !== 'unnamed' && 
+                            p.name.toLowerCase() !== 'unknown' &&
+                            p.name.trim() !== ''
+                          ).slice(0, 20).map((person, index) => (
                           <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                             <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                               {index + 1}
@@ -2733,17 +2684,6 @@ export default function TroyDashboard() {
                             <td className="px-4 py-4 whitespace-nowrap text-sm">
                               {person.transactions}
                             </td>
-                            <td className="px-4 py-4 whitespace-nowrap text-sm">
-                              ${person.totalValue.toLocaleString()}
-                            </td>
-                            <td className="px-4 py-4 whitespace-nowrap text-sm">
-                              ${person.transactions > 0 ? Math.round(person.totalValue / person.transactions).toLocaleString() : 0}
-                            </td>
-                            <td className="px-4 py-4 text-sm">
-                              <div className="max-w-200 whitespace-nowrap overflow-hidden text-ellipsis" title={person.roles.join(', ')}>
-                                {person.roles.join(', ')}
-                              </div>
-                            </td>
                           </tr>
                         ))}
                       </tbody>
@@ -2751,7 +2691,6 @@ export default function TroyDashboard() {
                   </div>
                 </CardContent>
               </Card>
-
               {/* Enslavers Table */}
               <Card>
                 <CardHeader>

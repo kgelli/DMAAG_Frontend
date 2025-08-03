@@ -40,7 +40,7 @@ export function AboutPage() {
       name: "Kusal Venkata Sai Shravanth Gelli",
       role: "Software Engineer - GRA",
       department: "Computer Science Department, GSU",
-      bio: "Played a key role in stabilizing and enhancing the DMMAG project by resolving major frontend and backend issues, maintaining core features and ensuring smooth feature integration.",
+      bio: "Led the end-to-end modernization of a research platform, improving usability, performance, data accessibility and production readiness.",
       image: "/images/team/Kusal-Gelli.jpg",
       email: "shravanthsai2508@gmail.com",
       linkedin: "kgelli",
@@ -528,18 +528,18 @@ export function AboutPage() {
                   <p className="flex items-center text-gray-700">
                     <Mail className="h-5 w-5 mr-2 text-blue-600" />
                     <a href="mailto:shreyatadipaneni2@Gmail.com" className="hover:text-blue-600 transition-colors">
-                      shreyatadipaneni2@gmail.com
+                      shravanthsai2508@gmail.com
                     </a>
                   </p>
                   <p className="flex items-center text-gray-700">
                     <Globe className="h-5 w-5 mr-2 text-blue-600" />
                     <a 
-                      href="https://gsu.edu/english" 
+                      href="https://english.gsu.edu/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="hover:text-blue-600 transition-colors"
                     >
-                      gsu.edu/english
+                      english.gsu.edu
                     </a>
                   </p>
                 </div>
