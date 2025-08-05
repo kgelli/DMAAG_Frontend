@@ -2222,13 +2222,16 @@ export default function TroyDashboard() {
             </div>
 
               {/* Location Network Analysis */}
+              
+              {/*
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     Location Network Analysis
-                    {/* Info icon and tooltip removed since Network Density is no longer used */}
                   </CardTitle>
-                  <p className="text-sm text-gray-500">Understanding the interconnected nature of transaction locations</p>
+                  <p className="text-sm text-gray-500">
+                    Understanding the interconnected nature of transaction locations
+                  </p>
                 </CardHeader>
                 <CardContent className="h-[400px]">
                   <ResponsiveContainer width="100%" height="100%">
@@ -2283,6 +2286,9 @@ export default function TroyDashboard() {
                   </ResponsiveContainer>
                 </CardContent>
               </Card>
+              */}
+
+              
 
 
             {/* Detailed Location Statistics Table */}
@@ -2447,7 +2453,7 @@ export default function TroyDashboard() {
         {activeView === 'people' && (
           <div className="grid grid-cols-1 gap-6">
             {/* Overview Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4"> {/* Changed md:grid-cols-4 to md:grid-cols-3 */}
+            {/*<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white">
                 <CardContent className="pt-6">
                   <h3 className="text-lg font-semibold opacity-90">Total Enslaved Persons</h3>
@@ -2493,7 +2499,7 @@ export default function TroyDashboard() {
                   </p>
                 </CardContent>
               </Card>
-            </div>
+            </div>*/}
 
             {/* People Analysis Charts */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
