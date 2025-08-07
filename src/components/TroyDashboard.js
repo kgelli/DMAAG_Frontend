@@ -867,7 +867,7 @@ export default function TroyDashboard() {
                   <div className="bg-blue-50 p-4 rounded-lg">
                     <h3 className="font-medium text-blue-800 text-lg mb-2">Sales Transactions</h3>
                     <p className="text-blue-700 mb-2">
-                      Sales represent permanent ownership transfers and typically command the highest values.
+                      Sales represent ownership transfers and valuation patterns.
                       The wide range between minimum and maximum values reflects factors such as:
                     </p>
                     <ul className="list-disc pl-5 space-y-1 text-blue-700 text-sm">
@@ -2409,7 +2409,7 @@ export default function TroyDashboard() {
                   <h3 className="font-medium text-amber-800 text-lg mb-3">Historical Geographic Context</h3>
                   <p className="text-amber-700 text-sm mb-3">
                     The spatial distribution of transactions reflects the broader geographic and economic development 
-                    of Georgia State during the antebellum period. Transportation infrastructure, agricultural suitability, 
+                    during the antebellum period. Transportation infrastructure, agricultural suitability, 
                     and settlement patterns all influenced where and how transactions occurred.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -2440,7 +2440,7 @@ export default function TroyDashboard() {
                     location represents communities where enslaved individuals built relationships, developed 
                     skills, and maintained cultural practices despite the constraints of bondage. Understanding 
                     the geographic distribution helps illuminate how slavery shaped the physical and social 
-                    landscape of Georgia State, creating networks of control and resistance that extended across 
+                    landscape, creating networks of control and resistance that extended across 
                     the entire region.
                   </p>
                 </div>
@@ -2760,18 +2760,16 @@ export default function TroyDashboard() {
                   <div className="bg-purple-50 p-5 rounded-lg shadow-sm">
                     <h3 className="font-medium text-purple-800 text-lg mb-3">Enslaved Persons in Records</h3>
                     <p className="text-purple-700 text-sm mb-3">
-                      The frequency of individuals appearing in multiple transaction records reveals patterns 
-                      of repeated sale, hire, and transfer. Some enslaved persons appear in numerous transactions, 
-                      indicating either high demand for their skills or unfortunate circumstances leading to 
-                      repeated sales.
+                      Frequent appearances of names like “Mary” or “George” in transaction records reflect common naming patterns among enslaved individuals. 
+                      These counts likely represent different people, offering insight into historical naming customs and recordkeeping practices.
                     </p>
                     <div className="bg-white bg-opacity-60 p-3 rounded text-xs">
-                      <strong>Key Patterns:</strong>
+                      <strong>Key Observations:</strong>
                       <ul className="list-disc pl-4 mt-1 space-y-1">
-                        <li>Multiple transactions may indicate skilled individuals</li>
-                        <li>Repeated sales could reflect financial distress of owners</li>
-                        <li>Family groups sometimes appear together in records</li>
-                        <li>Some individuals show progression from child to adult in records</li>
+                        <li>Common names may reflect naming conventions or religious/cultural influences</li>
+                        <li>Multiple individuals with the same name may appear across different locations</li>
+                        <li>Some names like “Unnamed” indicate missing or unrecorded information</li>
+                        <li>Patterns in naming can help historians trace familial or cultural connections</li>
                       </ul>
                     </div>
                   </div>
@@ -2780,7 +2778,7 @@ export default function TroyDashboard() {
                     <h3 className="font-medium text-red-800 text-lg mb-3">Enslaver Activity Patterns</h3>
                     <p className="text-red-700 text-sm mb-3">
                       The distribution of enslaver activity shows the concentration of slave ownership and 
-                      trading in Georgia State. Some individuals engaged in extensive trading activities, 
+                      trading recorded in the TROY database. Some individuals engaged in extensive trading activities, 
                       while others appear in only occasional transactions, often related to estate settlements 
                       or family transfers.
                     </p>
@@ -2795,39 +2793,13 @@ export default function TroyDashboard() {
                     </div>
                   </div>
                 </div>
-                
-                <div className="mt-6 bg-indigo-50 p-5 rounded-lg shadow-sm">
-                  <h3 className="font-medium text-indigo-800 text-lg mb-3">Network Analysis</h3>
-                  <p className="text-indigo-700 text-sm mb-3">
-                    The transaction frequency data reveals the social and economic networks that facilitated 
-                    the slave trade in Georgia State. Highly active individuals often served as intermediaries 
-                    or brokers, connecting buyers and sellers across the region.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-white bg-opacity-60 p-3 rounded">
-                      <h4 className="font-medium text-indigo-800 mb-2">Transaction Hubs</h4>
-                      <p className="text-indigo-700 text-xs">
-                        Individuals with numerous transactions often served as central nodes in trading 
-                        networks, facilitating connections between rural producers and urban markets, 
-                        or specializing in particular types of transactions like annual hires.
-                      </p>
-                    </div>
-                    <div className="bg-white bg-opacity-60 p-3 rounded">
-                      <h4 className="font-medium text-indigo-800 mb-2">Community Connections</h4>
-                      <p className="text-indigo-700 text-xs">
-                        The frequency patterns show how slavery created complex webs of relationships 
-                        within communities, with some families and individuals repeatedly connected 
-                        through transactions involving enslaved persons.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+
                 
                 <div className="mt-6 bg-gray-100 p-5 rounded-lg shadow-sm">
                   <h3 className="font-medium text-gray-800 text-lg mb-3">Human Stories Behind the Data</h3>
                   <p className="text-gray-700 text-sm">
                     Each name in these records represents a real person whose life was affected by the slave trade. 
-                    For enslaved persons, multiple transactions often meant family separations, forced relocations, 
+                    For enslaved persons, transactions often meant family separations, forced relocations, 
                     and disrupted communities. For some, repeated appearances might indicate specialized skills that 
                     made them valuable in the marketplace - a cruel irony where human talent increased vulnerability 
                     to sale. Understanding these individual patterns helps us move beyond aggregate statistics to 
