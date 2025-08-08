@@ -1,0 +1,3 @@
+window.RUNTIME_ENV = {
+    REACT_APP_GRAPHQL_URL: window.RUNTIME_ENV.REACT_APP_GRAPHQL_URL || "http://localhost:4000/graphql",
+};
