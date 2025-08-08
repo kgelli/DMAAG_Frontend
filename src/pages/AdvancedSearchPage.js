@@ -85,7 +85,7 @@ const [advancedFilters, setAdvancedFilters] = useState({
     setLoading(true);
     try {
       // Fetch GSU Records
-      const gsuResponse = await fetch('http://localhost:4000/graphql', {
+      const gsuResponse = await fetch(window.RUNTIME_ENV.REACT_APP_GRAPHQL_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -109,7 +109,7 @@ const [advancedFilters, setAdvancedFilters] = useState({
       });
 
       // Fetch Troy Records
-      const troyResponse = await fetch('http://localhost:4000/graphql', {
+      const troyResponse = await fetch(window.RUNTIME_ENV.REACT_APP_GRAPHQL_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

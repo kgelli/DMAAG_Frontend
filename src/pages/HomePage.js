@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
-import { Database, Book, Search, Map, Users, History, Globe } from 'lucide-react';
+import { Database, Book, Search, Map, Users, History, Globe, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function HomePage() {
@@ -21,6 +21,32 @@ export function HomePage() {
             through an accessible, comprehensive digital platform.
           </p>
         </div>
+
+        {/* About Section - Added with Project Aims */}
+        <Card className="mb-16 hover:shadow-xl transition-shadow border-t-4 border-blue-600">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Info className="h-8 w-8 text-blue-600" />
+              <CardTitle>About the DMAAG Project</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="prose max-w-none">
+              
+              <p className="text-gray-600 mb-4">
+                <strong>Our aim is to build an experimental database and website platform</strong> to explore the viability of a 
+                scalable database that would include all of Harris County and later all 19th Century Georgia counties. 
+                This platform serves as a proof of concept for larger-scale historical data preservation and accessibility.
+              </p>
+              <p className="text-gray-600">
+                The website is still in the building process, and your feedback is greatly appreciated as we continue to develop 
+                and refine this resource. Our mission is to preserve and present historical data in a modern, accessible format, 
+                enabling researchers, historians, genealogists, and the public to explore and understand the lives of enslaved individuals 
+                in Georgia during the Antebellum period.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Main Collections - Keeping original 2-column layout */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">

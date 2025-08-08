@@ -105,7 +105,7 @@ export function TroyRecordsPage({ showDashboard, setShowDashboard }) {
   const fetchTroyRecords = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:4000/graphql', {
+      const response = await fetch(window.RUNTIME_ENV.REACT_APP_GRAPHQL_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

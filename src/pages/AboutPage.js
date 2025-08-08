@@ -166,7 +166,7 @@ export function AboutPage() {
     },
     {
       source: "The Amos Distinguished Chair in English Letters",
-     
+      grant: "The Amos Distinguished Chair in English Letters",
       period: "2022-2025"
     }
   ];
@@ -433,6 +433,40 @@ export function AboutPage() {
           </CardContent>
         </Card>
 
+        {/* ARTIC Team Acknowledgment */}
+        <Card className="mb-12">
+          <CardHeader>
+            <CardTitle>Special Acknowledgment</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-700 mb-6">
+              Special thanks to the ARTIC (Advanced Research Computing Technology & Innovation Core) team at Georgia State University for their invaluable assistance with the deployment process and technical infrastructure.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900 mb-1">Suranga Edirisinghe</h3>
+                <p className="text-blue-600 text-sm font-medium mb-1">Associate Director</p>
+                <p className="text-gray-600 text-sm">neranjan@gsu.edu</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900 mb-1">Sanju Timsina</h3>
+                <p className="text-blue-600 text-sm font-medium mb-1">HPC Facilitator</p>
+                <p className="text-gray-600 text-sm">stimsina@gsu.edu</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900 mb-1">Scott Ryan Burns</h3>
+                <p className="text-blue-600 text-sm font-medium mb-1">System Administrator</p>
+                <p className="text-gray-600 text-sm">sburns17@gsu.edu</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900 mb-1">Christopher Childress</h3>
+                <p className="text-blue-600 text-sm font-medium mb-1">Application Developer</p>
+                <p className="text-gray-600 text-sm">cchildress@gsu.edu</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Publications */}
         <Card className="mb-12">
           <CardHeader>
@@ -527,7 +561,7 @@ export function AboutPage() {
                 <div className="space-y-2">
                   <p className="flex items-center text-gray-700">
                     <Mail className="h-5 w-5 mr-2 text-blue-600" />
-                    <a href="mailto:shreyatadipaneni2@Gmail.com" className="hover:text-blue-600 transition-colors">
+                    <a href="mailto:shravanthsai2508@gmail.com" className="hover:text-blue-600 transition-colors">
                       shravanthsai2508@gmail.com
                     </a>
                   </p>
