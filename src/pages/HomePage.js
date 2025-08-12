@@ -1,9 +1,23 @@
 // src/pages/HomePage.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
-import { Database, Book, Search, Map, Users, History, Globe, Info } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "../components/ui/card";
+import {
+  Database,
+  Book,
+  Search,
+  Map,
+  Users,
+  History,
+  Globe,
+  Info,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -17,8 +31,8 @@ export function HomePage() {
             Data Mining and Mapping Antebellum Georgia
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Preserving and exploring historical data about enslaved individuals in Georgia 
-            through an accessible, comprehensive digital platform.
+            Preserving and exploring historical data about enslaved individuals
+            in Georgia through an accessible, comprehensive digital platform.
           </p>
         </div>
 
@@ -27,22 +41,29 @@ export function HomePage() {
           <CardHeader>
             <div className="flex items-center gap-2">
               <Info className="h-8 w-8 text-blue-600" />
-              <CardTitle>About the DMAAG Project</CardTitle>
+              <CardTitle>About the DMMAG Project</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
             <div className="prose max-w-none">
-              
               <p className="text-gray-600 mb-4">
-                <strong>Our aim is to build an experimental database and website platform</strong> to explore the viability of a 
-                scalable database that would include all of Harris County and later all 19th Century Georgia counties. 
-                This platform serves as a proof of concept for larger-scale historical data preservation and accessibility.
+                <strong>
+                  Our aim is to build an experimental database and website
+                  platform
+                </strong>{" "}
+                to explore the viability of a scalable database that would
+                include all of Harris County and later all 19th Century Georgia
+                counties. This platform serves as a proof of concept for
+                larger-scale historical data preservation and accessibility.
               </p>
               <p className="text-gray-600">
-                The website is still in the building process, and your feedback is greatly appreciated as we continue to develop 
-                and refine this resource. Our mission is to preserve and present historical data in a modern, accessible format, 
-                enabling researchers, historians, genealogists, and the public to explore and understand the lives of enslaved individuals 
-                in Georgia during the Antebellum period.
+                The website is still in the building process, and your feedback
+                is greatly appreciated as we continue to develop and refine this
+                resource. Our mission is to preserve and present historical data
+                in a modern, accessible format, enabling researchers,
+                historians, genealogists, and the public to explore and
+                understand the lives of enslaved individuals in Georgia during
+                the Antebellum period.
               </p>
             </div>
           </CardContent>
@@ -57,12 +78,13 @@ export function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 mb-6">
-                Access Georgia State University's comprehensive collection of historical deed records,
-                property transactions, and documents that provide insights into the lives of enslaved 
-                individuals and their communities.
+                Access Georgia State University's comprehensive collection of
+                historical deed records, property transactions, and documents
+                that provide insights into the lives of enslaved individuals and
+                their communities.
               </p>
-              <button 
-                onClick={() => navigate('/gsu')}
+              <button
+                onClick={() => navigate("/gsu")}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Explore GSU Records
@@ -77,12 +99,12 @@ export function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 mb-6">
-                Discover Troy University's historical records documenting enslaved individuals,
-                transactions, and significant historical events that shaped Antebellum Georgia's
-                history and society.
+                Discover Troy University's historical records documenting
+                enslaved individuals, transactions, and significant historical
+                events that shaped Antebellum Georgia's history and society.
               </p>
-              <button 
-                onClick={() => navigate('/troy')}
+              <button
+                onClick={() => navigate("/troy")}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Explore Troy Records
@@ -102,8 +124,8 @@ export function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Powerful search functionality to locate specific records across both GSU and Troy 
-                  databases. 
+                  Powerful search functionality to locate specific records
+                  across both GSU and Troy databases.
                 </p>
               </CardContent>
             </Card>
@@ -118,11 +140,14 @@ export function HomePage() {
             <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
               <CardHeader>
                 <Map className="h-6 w-6 text-blue-600 mb-2" />
-                <CardTitle className="text-lg">Geographic Story Mapping</CardTitle>
+                <CardTitle className="text-lg">
+                  Geographic Story Mapping
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Interactive Geographic Story Mapping, tools to visualize historical locations and movement patterns.
+                  Interactive Geographic Story Mapping, tools to visualize
+                  historical locations and movement patterns.
                 </p>
               </CardContent>
             </Card>
@@ -137,8 +162,8 @@ export function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Dynamic visualizations to understand historical trends and patterns 
-                  in the data.
+                  Dynamic visualizations to understand historical trends and
+                  patterns in the data.
                 </p>
               </CardContent>
             </Card>
@@ -159,22 +184,36 @@ export function HomePage() {
                 <div className="bg-blue-100 rounded-full p-3 w-14 h-14 mx-auto mb-4 flex items-center justify-center">
                   <Book className="h-6 w-6 text-blue-600" />
                 </div>
-                <h3 className="font-semibold text-lg mb-3">Researchers & Historians</h3>
-                <p className="text-gray-600">Access comprehensive historical data, primary source documents, and analytical tools to support academic research and historical analysis.</p>
+                <h3 className="font-semibold text-lg mb-3">
+                  Researchers & Historians
+                </h3>
+                <p className="text-gray-600">
+                  Access comprehensive historical data, primary source
+                  documents, and analytical tools to support academic research
+                  and historical analysis.
+                </p>
               </div>
               <div className="p-4 rounded-lg hover:bg-blue-50 transition-colors">
                 <div className="bg-blue-100 rounded-full p-3 w-14 h-14 mx-auto mb-4 flex items-center justify-center">
                   <Users className="h-6 w-6 text-blue-600" />
                 </div>
                 <h3 className="font-semibold text-lg mb-3">Genealogists</h3>
-                <p className="text-gray-600">Trace family histories, discover ancestral connections, and reconstruct family narratives through detailed historical records.</p>
+                <p className="text-gray-600">
+                  Trace family histories, discover ancestral connections, and
+                  reconstruct family narratives through detailed historical
+                  records.
+                </p>
               </div>
               <div className="p-4 rounded-lg hover:bg-blue-50 transition-colors">
                 <div className="bg-blue-100 rounded-full p-3 w-14 h-14 mx-auto mb-4 flex items-center justify-center">
                   <Globe className="h-6 w-6 text-blue-600" />
                 </div>
                 <h3 className="font-semibold text-lg mb-3">General Public</h3>
-                <p className="text-gray-600">Explore Georgia's rich history, learn about significant historical events, and engage with interactive visualizations of historical data.</p>
+                <p className="text-gray-600">
+                  Explore Georgia's rich history, learn about significant
+                  historical events, and engage with interactive visualizations
+                  of historical data.
+                </p>
               </div>
             </div>
           </CardContent>
