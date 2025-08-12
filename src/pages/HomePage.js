@@ -41,7 +41,7 @@ export function HomePage() {
           <CardHeader>
             <div className="flex items-center gap-2">
               <Info className="h-8 w-8 text-blue-600" />
-              <CardTitle>About the DMMAG Project</CardTitle>
+              <CardTitle>About the dmaag Project</CardTitle>
             </div>
           </CardHeader>
           <CardContent>

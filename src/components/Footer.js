@@ -48,7 +48,7 @@ export function Footer() {
             
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">DMMAG Project</h3>
+            <h3 className="text-lg font-semibold mb-4">dmaag Project</h3>
             <p className="text-gray-400">
               Data Mining and Mapping Antebellum Georgia - A research initiative exploring historical data of enslaved individuals in Georgia
             </p>

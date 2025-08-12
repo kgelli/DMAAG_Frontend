@@ -1,9 +1,9 @@
-# DMMAG
+# dmaag
 
 ## Project Repositories
 
-- Frontend: [DMMAG_Frontend](https://github.com/YOUR_USERNAME/DMMAG_Frontend/tree/master)
-- Backend: [DMMAG_GraphQL](https://github.com/YOUR_USERNAME/DMMAG_GraphQL/tree/master)
+- Frontend: [dmaag_Frontend](https://github.com/YOUR_USERNAME/dmaag_Frontend/tree/master)
+- Backend: [dmaag_GraphQL](https://github.com/YOUR_USERNAME/dmaag_GraphQL/tree/master)
 
 ## Prerequisites
 
@@ -17,11 +17,11 @@
 2. Download and save the dump file to your local machine
 3. Create a new PostgreSQL database:
    ```sql
-   CREATE DATABASE west_DMMAG;
+   CREATE DATABASE west_dmaag;
    ```
 4. Import the database dump:
    ```bash
-   psql -U postgres -d west_DMMAG < path_to_dump_file
+   psql -U postgres -d west_dmaag < path_to_dump_file
    ```
 
 ## Project Setup
@@ -30,12 +30,12 @@
 
 ```bash
 # Clone Frontend
-git clone https://github.com/<USERNAME>/DMMAG_Frontend.git
-cd DMMAG_Frontend
+git clone https://github.com/<USERNAME>/dmaag_Frontend.git
+cd dmaag_Frontend
 
 # Clone Backend (in a separate terminal)
-git clone https://github.com/<USERNAME>/DMMAG_GraphQL.git
-cd DMMAG_GraphQL
+git clone https://github.com/<USERNAME>/dmaag_GraphQL.git
+cd dmaag_GraphQL
 ```
 
 ### 2. GraphQL Server Setup
@@ -43,7 +43,7 @@ cd DMMAG_GraphQL
 Navigate to the GraphQL server directory and install dependencies:
 
 ```bash
-cd DMMAG_GraphQL
+cd dmaag_GraphQL
 npm install
 ```
 
@@ -78,7 +78,7 @@ The GraphQL server will be available at: `http://localhost:4000/graphql`
 Navigate to the frontend directory:
 
 ```bash
-cd DMMAG_Frontend
+cd dmaag_Frontend
 ```
 
 Install dependencies:
@@ -103,8 +103,8 @@ npm start
 
 - **Frontend**: React.js with Tailwind CSS
 - **Backend**: GraphQL server with Apollo Server
-- **Database**: PostgreSQL (west_DMMAG database)
-- **Schema**: DMMAG
+- **Database**: PostgreSQL (west_dmaag database)
+- **Schema**: DMAAG
 - **ORM**: TypeORM
 - **Build tools**: Babel
 
@@ -115,7 +115,7 @@ The project uses environment variables for configuration stored in a `.env` file
 ## Important Notes
 
 - Ensure PostgreSQL is running on the specified port
-- Make sure the DMMAG schema exists in the west_DMMAG database
+- Make sure the DMAAG schema exists in the west_dmaag database
 - The GraphQL server should be running before starting the frontend
 
 ## Troubleshooting
@@ -154,7 +154,7 @@ The project uses environment variables for configuration stored in a `.env` file
 Your project should look like this:
 
 ```
-DMMAG_GraphQL/
+dmaag_GraphQL/
 ├── config/
 ├── models/
 ├── node_modules/
@@ -177,10 +177,10 @@ npm install
 # Test database connection
 node testConnection.js
 
-# Start GraphQL server (in DMMAG_GraphQL directory)
+# Start GraphQL server (in dmaag_GraphQL directory)
 npm start
 
-# Start Frontend (in DMMAG_Frontend directory)
+# Start Frontend (in dmaag_Frontend directory)
 npm start
 
 # Run tests
