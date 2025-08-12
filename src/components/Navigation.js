@@ -20,12 +20,12 @@ export function Navigation() {
             {/* <Database className="h-6 w-6" /> 
             <img 
               src="/logo.png" 
-              alt="dmaag Logo" 
+              alt="DMMAG Logo" 
               className="h-8 w-8 object-contain"
             />
             */}
             <Home className="h-6 w-6" />
-            <span className="font-bold text-xl">dmaag</span>
+            <span className="font-bold text-xl">D</span>
           </Link>
           <div className="flex space-x-4">
             <Link 

@@ -51,7 +51,7 @@ export function AboutPage() {
       name: "Shreya Tadipaneni",
       role: "Lead Software Developer Engineer - GRA",
       department: "Computer Science Department, GSU",
-      bio: "Developer of the entire dmaag application, implementing the database architecture, backend systems, and frontend interfaces to create a comprehensive research platform.",
+      bio: "Developer of the entire DMMAG application, implementing the database architecture, backend systems, and frontend interfaces to create a comprehensive research platform.",
       image: "/images/team/shreya-tadipaneni.jpg",
       email: "shreyatadipaneni2@gmail.com",
       linkedin: "shreya-tadipaneni",
@@ -228,13 +228,13 @@ export function AboutPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-blue-900 mb-6">
-            About the dmaag Project
+            About the DMMAG Project
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Data Mining and Mapping Antebellum Georgia - A collaborative research initiative exploring historical data of enslaved individuals in Georgia
           </p>
           <p className="mt-6 text-lg text-gray-700 max-w-4xl mx-auto">
-            The vision of the dmaag project has been to generate a relational database and map that will expand our understanding of the antebellum south, particularly through the lives of enslaved people across the United States South. Where David Eltis's Slave Voyages brought us to the shores and ports of the Americas, dmaag takes us inland, turning from the Trans-Atlantic to the history of internal forced migrations of Africans and African Americans across the US South.
+            The vision of the DMMAG project has been to generate a relational database and map that will expand our understanding of the antebellum south, particularly through the lives of enslaved people across the United States South. Where David Eltis's Slave Voyages brought us to the shores and ports of the Americas, D takes us inland, turning from the Trans-Atlantic to the history of internal forced migrations of Africans and African Americans across the US South.
           </p>
         </div>
 
@@ -245,10 +245,10 @@ export function AboutPage() {
           </CardHeader>
           <CardContent>
             <p className="text-gray-700 mb-4">
-              The Data Mining and Mapping Antebellum Georgia (dmaag) project is a comprehensive digital initiative designed to preserve, analyze, and provide access to historical records about enslaved individuals in Georgia during the Antebellum period.
+              The Data Mining and Mapping Antebellum Georgia (DMMAG) project is a comprehensive digital initiative designed to preserve, analyze, and provide access to historical records about enslaved individuals in Georgia during the Antebellum period.
             </p>
             <p className="text-gray-700 mb-4">
-              The goal of dmaag is to generate a scalable database and map prototype that demonstrates how researchers can use digitized genealogical and institutional archives, including early state maps to both identify and geolocate individual enslaved African Americans and their families before emancipation.
+              The goal of DMMAG is to generate a scalable database and map prototype that demonstrates how researchers can use digitized genealogical and institutional archives, including early state maps to both identify and geolocate individual enslaved African Americans and their families before emancipation.
             </p>
             <p className="text-gray-700 mb-4">
               Through a collaboration with research partners at Troy University (Alabama) and collaborators at Georgia State University, we have built a pilot database with more than 5000 named enslaved people and a related land database of over 1000 line entries. This allows researchers to connect identified enslaved people to specific enslavers and locations where they may have lived before emancipation. The data is derived from a sample pool of 120 enslavers in Harris County holding the largest numbers of enslaved people, and the properties in Harris County, GA where they may have lived.
@@ -257,13 +257,13 @@ export function AboutPage() {
               The expediency of the archival work was made possible through an agreement with FamilySearch.org that granted our team access to their digitized collection of estate and land records. Further support from Georgia Archives with our map searches and permission to use the 19th Century Harris County map with land lot grids has been central to our story map visualization.
             </p>
             <p className="text-gray-700 mb-4">
-              Through the 2024 award of a Digital Humanities Development Grant from the National Endowment for the Humanities (NEH), the pilot dmaag database and website was developed and launched in spring 2025. Along with this work, the dmaag created an ArcGIS story map that gives a multimodal overview of the work and the data. The story map was built by a team of faculty, graduate, and undergraduate researchers in collaboration with the GSU Project Lab.
+              Through the 2024 award of a Digital Humanities Development Grant from the National Endowment for the Humanities (NEH), the pilot DMMAG database and website was developed and launched in spring 2025. Along with this work, the DMMAG created an ArcGIS story map that gives a multimodal overview of the work and the data. The story map was built by a team of faculty, graduate, and undergraduate researchers in collaboration with the GSU Project Lab.
             </p>
             <p className="text-gray-700 mb-4">
-              The dynamic quality of the dmaag project has been the expanse of cross-institutional and cross-disciplinary collaborations and the GSU student research teams that have shaped the outcomes. This includes students from disciplines such as Computer Sciences, Geosciences, English, History, Film, Communications, and Africana Studies.
+              The dynamic quality of the DMMAG project has been the expanse of cross-institutional and cross-disciplinary collaborations and the GSU student research teams that have shaped the outcomes. This includes students from disciplines such as Computer Sciences, Geosciences, English, History, Film, Communications, and Africana Studies.
             </p>
             <p className="text-gray-700">
-              We intend for the dmaag database and story map to serve as a living historical, genealogical, and anthropological archive for both scholars and the public, who, as future end-users, will be able to contribute to this research. This work will contribute an especially meaningful resource for professional and lay researchers who are working to better understand the layered and complex societies of the antebellum south.
+              We intend for the DMMAG database and story map to serve as a living historical, genealogical, and anthropological archive for both scholars and the public, who, as future end-users, will be able to contribute to this research. This work will contribute an especially meaningful resource for professional and lay researchers who are working to better understand the layered and complex societies of the antebellum south.
             </p>
           </CardContent>
         </Card>
@@ -419,7 +419,7 @@ export function AboutPage() {
           </CardHeader>
           <CardContent>
             <p className="text-gray-700 mb-6">
-              The dmaag project gratefully acknowledges the financial support and resources provided by the following organizations:
+              The DMMAG project gratefully acknowledges the financial support and resources provided by the following organizations:
             </p>
             <div className="space-y-4">
               {funding.map((source, index) => (
